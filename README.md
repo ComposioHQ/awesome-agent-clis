@@ -97,7 +97,6 @@ CLIs without the 🤖 badge are **established tools that work well with agents**
 - [How Skills Work](#how-skills-work)
 - [What Makes a CLI Agent-Ready?](#what-makes-a-cli-agent-ready)
 - [CLIs](#clis)
-  - [Coding & Development](#coding--development)
   - [Tool Orchestration](#tool-orchestration)
   - [Service Provisioning](#service-provisioning)
   - [Communication](#communication)
@@ -115,17 +114,6 @@ CLIs without the 🤖 badge are **established tools that work well with agents**
 - [License](#license)
 
 ## CLIs
-
-### Coding & Development
-
-- [Claude Code](https://docs.anthropic.com/en/docs/claude-code) 🤖 - Anthropic's terminal-native coding agent. Full codebase understanding, autonomous multi-step execution, and git-aware workflows.
-- [Cursor CLI](https://cursor.com/docs/cli/overview) 🤖 - Cursor's terminal agent for writing, reviewing, and modifying code. Supports interactive, plan, and ask modes, plus non-interactive automation, session resume, cloud handoff, and sandbox controls.
-- [Gemini CLI](https://github.com/google-gemini/gemini-cli) 🤖 - Google's open-source coding agent with Plan Mode, Conductor for automated reviews, and multimodal input.
-- [OpenAI Codex CLI](https://github.com/openai/codex) 🤖 - OpenAI's terminal coding agent with sandboxed execution and multi-file editing.
-- [Aider](https://github.com/Aider-AI/aider) - Git-native AI pair programming in the terminal. Works with any LLM, strong at refactors. _By [@paul-gauthier](https://github.com/paul-gauthier)_
-- [OpenCode](https://github.com/opencode-ai/opencode) - Provider-agnostic AI coding CLI with multi-agent orchestration, Git-backed sessions, and TUI. _By [@opencode-ai](https://github.com/opencode-ai)_
-- [Junie CLI](https://www.jetbrains.com/junie/) 🤖 - JetBrains' standalone coding agent. LLM-agnostic, runs in terminal/CI/CD, supports multiple models.
-- [.NET Aspire CLI](https://learn.microsoft.com/en-us/dotnet/aspire/) 🤖 - Microsoft's AI-agent-native CLI for .NET with detached startup, resource control, and isolated environments.
 
 ### Tool Orchestration
 
@@ -186,6 +174,7 @@ CLIs without the 🤖 badge are **established tools that work well with agents**
 ### Voice & Media
 
 - [ElevenLabs CLI](https://elevenlabs.io) 🤖 - Voice and audio service management from the terminal. [`skill`](elevenlabs-cli/SKILL.md)
+- [gifgrep](https://github.com/steipete/gifgrep) - Search GIFs from Tenor/Giphy via CLI or TUI. Scriptable with `--json`, `--format`, `--max`, plus inline terminal previews, downloads, and still/sheet extraction. _By [@steipete](https://github.com/steipete)_ [`skill`](gifgrep/SKILL.md)
 
 ### IoT & Smart Home
 
