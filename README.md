@@ -51,6 +51,29 @@ Get your API key at [platform.composio.dev](https://platform.composio.dev/?utm_s
 
 ---
 
+## How Skills Work
+
+Every CLI in this list has a **`SKILL.md`** file in its own folder. Skills teach AI coding agents (Claude Code, Cursor, Codex, etc.) how to install, authenticate, and use each CLI — so the agent can take real actions on your behalf.
+
+Skills use **progressive disclosure** for efficiency:
+
+1. **Metadata loading** (~100 tokens): The agent scans skill names and descriptions to find relevant CLIs
+2. **Full instructions** (<5k tokens): Loaded only when the agent determines the skill applies
+3. **Execution**: The agent runs CLI commands based on the skill's instructions
+
+To use a skill, copy the CLI's folder into your agent's skills directory (e.g. `~/.claude/skills/`) or point your agent at this repo.
+
+```
+awesome-agent-clis/
+├── gogcli/SKILL.md          # Google Suite CLI
+├── stripe-cli/SKILL.md      # Stripe CLI
+├── ntn/SKILL.md             # Notion CLI
+├── ...                      # one folder per CLI
+└── README.md
+```
+
+---
+
 ## What Makes a CLI Agent-Ready?
 
 Not every CLI is built with agents in mind. The 🤖 badge marks CLIs that were **explicitly designed** for AI agent use. Common traits:
@@ -71,6 +94,7 @@ CLIs without the 🤖 badge are **established tools that work well with agents**
 ## Contents
 
 - [Quickstart](#quickstart-give-your-agent-1000-tools)
+- [How Skills Work](#how-skills-work)
 - [What Makes a CLI Agent-Ready?](#what-makes-a-cli-agent-ready)
 - [CLIs](#clis)
   - [Coding & Development](#coding--development)
@@ -78,12 +102,14 @@ CLIs without the 🤖 badge are **established tools that work well with agents**
   - [Service Provisioning](#service-provisioning)
   - [Communication](#communication)
   - [Payments & Commerce](#payments--commerce)
+  - [Food Delivery](#food-delivery)
   - [Cloud & Infrastructure](#cloud--infrastructure)
   - [Version Control](#version-control)
   - [Database](#database)
   - [Analytics & Observability](#analytics--observability)
   - [Workspace & Productivity](#workspace--productivity)
   - [Voice & Media](#voice--media)
+  - [IoT & Smart Home](#iot--smart-home)
 - [Contributing](#contributing)
 - [Resources](#resources)
 - [License](#license)
@@ -103,72 +129,100 @@ CLIs without the 🤖 badge are **established tools that work well with agents**
 
 ### Tool Orchestration
 
-- [Composio CLI](https://docs.composio.dev/docs/cli) 🤖 - Search, authenticate, and execute tools across 1000+ apps. Type-safe code generation, trigger listeners, and structured JSON output.
+- [Composio CLI](https://docs.composio.dev/docs/cli) 🤖 - Search, authenticate, and execute tools across 1000+ apps. Type-safe code generation, trigger listeners, and structured JSON output. [`skill`](composio-cli/SKILL.md)
 
 ### Service Provisioning
 
-- [Stripe Projects CLI](https://docs.stripe.com/projects) 🤖 - Provision provider-backed services from the terminal, link existing accounts, sync credentials into `.env`, and manage upgrades and billing. Supports agents with `--json`, `--no-interactive`, and `--auto-confirm`. Public preview.
-- [Ramp CLI](https://ramp.com) 🤖 - Agent-ready spend and finance service provisioning.
+- [Stripe Projects CLI](https://docs.stripe.com/projects) 🤖 - Provision provider-backed services from the terminal, link existing accounts, sync credentials into `.env`, and manage upgrades and billing. Supports agents with `--json`, `--no-interactive`, and `--auto-confirm`. Public preview. [`skill`](stripe-projects-cli/SKILL.md)
+- [Ramp CLI](https://ramp.com) 🤖 - Agent-ready spend and finance service provisioning. [`skill`](ramp-cli/SKILL.md)
 
 ### Communication
 
-- [Resend CLI](https://github.com/resend/resend-cli) 🤖 - Send emails, manage domains, API keys, contacts, and broadcasts. 53 commands across 13 resources. Auto-detects TTY for JSON output, natural language scheduling, idempotency keys, `resend doctor` for agent detection. _By [@zenorocha](https://github.com/zenorocha)_
-- [Sendblue CLI](https://sendblue.co) 🤖 - iMessage integration for agents.
-- [Kapso CLI](https://kapso.ai) 🤖 - WhatsApp messaging from the terminal.
-- [Mailcoach CLI](https://mailcoach.app) 🤖 - Email campaigns and transactional email management.
+- [Resend CLI](https://github.com/resend/resend-cli) 🤖 - Send emails, manage domains, API keys, contacts, and broadcasts. 53 commands across 13 resources. Auto-detects TTY for JSON output, natural language scheduling, idempotency keys, `resend doctor` for agent detection. _By [@zenorocha](https://github.com/zenorocha)_ [`skill`](resend-cli/SKILL.md)
+- [wacli](https://github.com/steipete/wacli) 🤖 - WhatsApp CLI: sync message history, search messages, send texts and files, manage contacts and groups. `--json` for structured output. _By [@steipete](https://github.com/steipete)_ [`skill`](wacli/SKILL.md)
+- [Sendblue CLI](https://sendblue.co) 🤖 - iMessage integration for agents. [`skill`](sendblue-cli/SKILL.md)
+- [Kapso CLI](https://kapso.ai) 🤖 - WhatsApp messaging from the terminal. [`skill`](kapso-cli/SKILL.md)
+- [Mailcoach CLI](https://mailcoach.app) 🤖 - Email campaigns and transactional email management. [`skill`](mailcoach-cli/SKILL.md)
 
 ### Payments & Commerce
 
-- [Stripe CLI](https://github.com/stripe/stripe-cli) - Test webhooks, trigger events, tail API logs, and manage Stripe resources. `--json` flag for structured output.
-- [Visa CLI](https://visa.com) 🤖 - AI agents make card-native payments programmatically. Closed beta.
+- [Stripe CLI](https://github.com/stripe/stripe-cli) - Test webhooks, trigger events, tail API logs, and manage Stripe resources. `--json` flag for structured output. [`skill`](stripe-cli/SKILL.md)
+- [Visa CLI](https://visa.com) 🤖 - AI agents make card-native payments programmatically. Closed beta. [`skill`](visa-cli/SKILL.md)
+
+### Food Delivery
+
+- [ordercli](https://github.com/steipete/ordercli) - CLI for Foodora and Deliveroo. View order history, track active orders, reorder past meals. `--json` output. _By [@steipete](https://github.com/steipete)_ [`skill`](ordercli/SKILL.md)
 
 ### Cloud & Infrastructure
 
-- [Vercel CLI](https://github.com/vercel/vercel) - Deploy projects, manage domains and env vars, inspect logs, and sync local project settings with `vercel pull`. Supports token-based auth for CI with `--token`.
-- [Railway CLI](https://github.com/railwayapp/cli) - Deploy services, manage variables, and provision databases from the terminal.
-- [AWS CLI](https://github.com/aws/aws-cli) - Manage AWS services. `--output json` for structured output, profile-based auth.
-- [Google Cloud CLI](https://cloud.google.com/sdk/gcloud) - Manage GCP resources. `--format=json`, service account auth, scriptable.
+- [Vercel CLI](https://github.com/vercel/vercel) - Deploy projects, manage domains and env vars, inspect logs, and sync local project settings with `vercel pull`. Supports token-based auth for CI with `--token`. [`skill`](vercel-cli/SKILL.md)
+- [Railway CLI](https://github.com/railwayapp/cli) - Deploy services, manage variables, and provision databases from the terminal. [`skill`](railway-cli/SKILL.md)
+- [AWS CLI](https://github.com/aws/aws-cli) - Manage AWS services. `--output json` for structured output, profile-based auth. [`skill`](aws-cli/SKILL.md)
+- [Google Cloud CLI](https://cloud.google.com/sdk/gcloud) - Manage GCP resources. `--format=json`, service account auth, scriptable. [`skill`](gcloud-cli/SKILL.md)
 
 ### Version Control
 
-- [GitHub CLI](https://github.com/cli/cli) - Issues, PRs, repos, actions, and code search. `--json` with `--jq` for precise field extraction.
-- [GitLab CLI](https://gitlab.com/gitlab-org/cli) - MRs, issues, pipelines, and CI/CD management. `--output json` flag.
+- [GitHub CLI](https://github.com/cli/cli) - Issues, PRs, repos, actions, and code search. `--json` with `--jq` for precise field extraction. [`skill`](github-cli/SKILL.md)
+- [GitLab CLI](https://gitlab.com/gitlab-org/cli) - MRs, issues, pipelines, and CI/CD management. `--output json` flag. [`skill`](gitlab-cli/SKILL.md)
 
 ### Database
 
-- [Supabase CLI](https://github.com/supabase/cli) - Manage Postgres databases, auth, edge functions, and storage. Local dev with `supabase start`.
-- [Neon CLI](https://neon.com/docs/reference/neon-cli) - Manage Neon projects, branches, databases, roles, and connection strings from the terminal. Supports web auth or API-key auth and structured output formats.
-- [PlanetScale CLI](https://github.com/planetscale/cli) - Branch, deploy, and manage MySQL databases with deploy requests.
-- [Turso CLI](https://github.com/tursodatabase/turso-cli) - Manage libSQL/SQLite databases, replicas, and groups.
+- [Supabase CLI](https://github.com/supabase/cli) - Manage Postgres databases, auth, edge functions, and storage. Local dev with `supabase start`. [`skill`](supabase-cli/SKILL.md)
+- [Neon CLI](https://neon.com/docs/reference/neon-cli) - Manage Neon projects, branches, databases, roles, and connection strings from the terminal. Supports web auth or API-key auth and structured output formats. [`skill`](neon-cli/SKILL.md)
+- [PlanetScale CLI](https://github.com/planetscale/cli) - Branch, deploy, and manage MySQL databases with deploy requests. [`skill`](planetscale-cli/SKILL.md)
+- [Turso CLI](https://github.com/tursodatabase/turso-cli) - Manage libSQL/SQLite databases, replicas, and groups. [`skill`](turso-cli/SKILL.md)
 
 ### Analytics & Observability
 
-- [PostHog CLI](https://posthog.com) - Query events, manage feature flags, and pull analytics data.
-- [Sentry CLI](https://github.com/getsentry/sentry-cli) - Manage releases, upload source maps, and query issues. JSON output with `--format json`.
+- [PostHog CLI](https://posthog.com) - Query events, manage feature flags, and pull analytics data. [`skill`](posthog-cli/SKILL.md)
+- [Sentry CLI](https://github.com/getsentry/sentry-cli) - Manage releases, upload source maps, and query issues. JSON output with `--format json`. [`skill`](sentry-cli/SKILL.md)
 
 ### Workspace & Productivity
 
-- [Google Workspace CLI (`gws`)](https://github.com/googleworkspace/cli) 🤖 - One CLI for all of Google Workspace. Dynamically built from Google's Discovery Service — when Google adds an API endpoint, `gws` picks it up automatically. Drive, Gmail, Calendar, Sheets, Docs, Chat, Admin, and more. 100+ agent skills included, structured JSON output, structured exit codes (0–5), helper commands (`+send`, `+agenda`, `+triage`), and Model Armor response sanitization. 22k+ stars.
+- [Google Workspace CLI (`gws`)](https://github.com/googleworkspace/cli) 🤖 - One CLI for all of Google Workspace. Dynamically built from Google's Discovery Service — when Google adds an API endpoint, `gws` picks it up automatically. Drive, Gmail, Calendar, Sheets, Docs, Chat, Admin, and more. 100+ agent skills included, structured JSON output, structured exit codes (0–5), helper commands (`+send`, `+agenda`, `+triage`), and Model Armor response sanitization. 22k+ stars. [`skill`](google-workspace-cli/SKILL.md)
+- [gogcli](https://github.com/steipete/gogcli) 🤖 - Google Suite CLI for Gmail, Calendar, Chat, Drive, Docs, Sheets, Slides, Forms, Contacts, Tasks, Keep, and Admin. JSON output, multiple accounts, OAuth/service-account auth, command allowlist for sandboxed agent runs. 6.5k+ stars. _By [@steipete](https://github.com/steipete)_ [`skill`](gogcli/SKILL.md)
+- [ntn](https://www.npmjs.com/package/ntn) - Notion CLI. Authenticate, manage Workers, interact with the Notion API (`ntn api`), and upload files. Inline request syntax for API calls. _By [@makenotion](https://github.com/makenotion)_ [`skill`](ntn/SKILL.md)
 
 ### Voice & Media
 
-- [ElevenLabs CLI](https://elevenlabs.io) 🤖 - Voice and audio service management from the terminal.
+- [ElevenLabs CLI](https://elevenlabs.io) 🤖 - Voice and audio service management from the terminal. [`skill`](elevenlabs-cli/SKILL.md)
+
+### IoT & Smart Home
+
+- [sonoscli](https://github.com/steipete/sonoscli) - Control Sonos speakers over local network. Playback, grouping, queue, favorites, scenes, Spotify integration, and volume control. `--format json` output. _By [@steipete](https://github.com/steipete)_ [`skill`](sonoscli/SKILL.md)
 
 ## Contributing
 
 Found a CLI that should be here? Open a PR!
 
 1. Fork this repo
-2. Add the CLI to the appropriate category
-3. Use the format: `- [Name](link) - One-line description.`
+2. Add the CLI to the appropriate category in the README
+3. Use the format: `- [Name](link) - One-line description. [`skill`](folder/SKILL.md)`
 4. Add 🤖 if the CLI was explicitly built with agent use in mind
-5. Submit a PR
+5. Create a folder with a `SKILL.md` file (see [How Skills Work](#how-skills-work))
+6. Submit a PR
 
-The CLI should be:
+### SKILL.md Format
+
+Each `SKILL.md` must include YAML frontmatter with `name` (≤64 chars) and `description` (≤1024 chars), followed by Markdown instructions covering installation, authentication, and key commands:
+
+```yaml
+---
+name: "CLI Name"
+description: "What this CLI does and when an agent should use it."
+---
+
+# CLI Name
+
+Installation, auth, key commands, output modes...
+```
+
+### CLI Requirements
 
 - **Publicly available** (GA or public beta)
 - **Documented** with a working README or docs site
 - **Useful from a terminal** (not just a wrapper around a GUI)
+- **Not an AI coding agent** — this list is for CLIs that agents _use_, not agents themselves
 
 ## Resources
 
