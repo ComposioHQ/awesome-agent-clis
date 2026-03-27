@@ -98,6 +98,7 @@ CLIs without the 🤖 badge are **established tools that work well with agents**
 - [What Makes a CLI Agent-Ready?](#what-makes-a-cli-agent-ready)
 - [CLIs](#clis)
   - [Tool Orchestration](#tool-orchestration)
+  - [Search & Research](#search--research)
   - [Service Provisioning](#service-provisioning)
   - [Communication](#communication)
   - [Payments & Commerce](#payments--commerce)
@@ -118,6 +119,10 @@ CLIs without the 🤖 badge are **established tools that work well with agents**
 ### Tool Orchestration
 
 - [Composio CLI](https://docs.composio.dev/docs/cli) 🤖 - Search, authenticate, and execute tools across 1000+ apps. Type-safe code generation, trigger listeners, and structured JSON output. [`skill`](composio-cli/SKILL.md)
+
+### Search & Research
+
+- [Tavily CLI](https://tavily.com) 🤖 - Web search, page extraction, site crawling, and multi-source research for agents. Results are pre-processed for LLM consumption. `--json` on all commands. [`skill`](tavily-cli/SKILL.md)
 
 ### Service Provisioning
 
