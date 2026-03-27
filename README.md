@@ -163,7 +163,8 @@ CLIs without the 🤖 badge are **established tools that work well with agents**
 ### Analytics & Observability
 
 - [PostHog CLI](https://posthog.com) - Query events, manage feature flags, and pull analytics data. [`skill`](posthog-cli/SKILL.md)
-- [Sentry CLI](https://github.com/getsentry/sentry-cli) - Manage releases, upload source maps, and query issues. JSON output with `--format json`. [`skill`](sentry-cli/SKILL.md)
+- [Sentry CLI](https://github.com/getsentry/sentry-cli) - Manage releases, debug symbols, source maps, cron monitors, and logs. `--format json` output. [`skill`](sentry-cli/SKILL.md)
+- [Sentry Developer CLI](https://cli.sentry.dev/) 🤖 - Interactive issue management with AI-powered root cause analysis (`sentry issue explain`), step-by-step fix plans, structured JSON output, auto-detects project from `.env`. Built for humans and agents.
 
 ### Workspace & Productivity
 
