@@ -105,6 +105,7 @@ CLIs without the 🤖 badge are **established tools that work well with agents**
   - [Food Delivery](#food-delivery)
   - [Cloud & Infrastructure](#cloud--infrastructure)
   - [Version Control](#version-control)
+  - [Code Quality & Review](#code-quality--review)
   - [Database](#database)
   - [Analytics & Observability](#analytics--observability)
   - [Workspace & Productivity](#workspace--productivity)
@@ -157,6 +158,10 @@ CLIs without the 🤖 badge are **established tools that work well with agents**
 
 - [GitHub CLI](https://github.com/cli/cli) - Issues, PRs, repos, actions, and code search. `--json` with `--jq` for precise field extraction. [`skill`](github-cli/SKILL.md)
 - [GitLab CLI](https://gitlab.com/gitlab-org/cli) - MRs, issues, pipelines, and CI/CD management. `--output json` flag. [`skill`](gitlab-cli/SKILL.md)
+
+### Code Quality & Review
+
+- [CodeRabbit CLI](https://docs.coderabbit.ai/cli/overview) 🤖 - AI code reviews directly in your terminal before you commit. Reviews local changes, supports interactive, `--plain`, and agent-friendly `--prompt-only` modes, and pairs with coding agents for fix loops. Open beta. [`skill`](coderabbit-cli/SKILL.md)
 
 ### Database
 
@@ -221,6 +226,9 @@ Installation, auth, key commands, output modes...
 
 ## Resources
 
+- [CodeRabbit CLI docs](https://docs.coderabbit.ai/cli/overview) - Review local changes, use `cr --prompt-only` for agent workflows, and integrate with Claude Code or Codex
+- [CodeRabbit docs index](https://docs.coderabbit.ai/llms.txt) - Full documentation index for discovering CLI pages, integrations, and command reference
+- [CodeRabbit CLI launch post](https://x.com/JuanPa/status/2037559738955694404?s=20) - Launch post from Juan Pablo
 - ["Building CLIs for agents" by @ericzakariasson](https://x.com/ericzakariasson/status/2036762680401223946) - 384K-view thread on what makes CLIs work for agents: non-interactive flags, useful `--help` with examples, idempotent commands, `--dry-run`, actionable errors, and pipeable output
 - [Resend CLI announcement](https://resend.com/blog/resend-cli) - "Built for humans and AI agents"
 - [Stripe Projects announcement](https://stripe.com/blog/introducing-stripe-projects) - "Provision and manage services from the CLI"
