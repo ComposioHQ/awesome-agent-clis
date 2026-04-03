@@ -153,6 +153,7 @@ CLIs without the 🤖 badge are **established tools that work well with agents**
 - [Railway CLI](https://github.com/railwayapp/cli) - Deploy services, manage variables, and provision databases from the terminal. [`skill`](railway-cli/SKILL.md)
 - [AWS CLI](https://github.com/aws/aws-cli) - Manage AWS services. `--output json` for structured output, profile-based auth. [`skill`](aws-cli/SKILL.md)
 - [Google Cloud CLI](https://cloud.google.com/sdk/gcloud) - Manage GCP resources. `--format=json`, service account auth, scriptable. [`skill`](gcloud-cli/SKILL.md)
+- [DeployHQ CLI](https://github.com/deployhq/deployhq-cli) 🤖 - Deploy, manage projects, and automate release workflows on DeployHQ. `--json` field selection, piped output auto-detection, agent detection mode. _By [@deployhq](https://github.com/deployhq)_ [`skill`](deployhq-cli/SKILL.md)
 
 ### Version Control
 
